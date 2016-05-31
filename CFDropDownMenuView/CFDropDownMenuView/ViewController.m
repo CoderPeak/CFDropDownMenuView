@@ -32,11 +32,10 @@
     // 配置展示结果talbeview
     [self.view addSubview:self.showTableView];
     
-    UILabel *titleL = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, CFScreenWidth, 88)];
+    UILabel *titleL = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, CFScreenWidth, 44)];
     titleL.textAlignment = NSTextAlignmentCenter;
     titleL.backgroundColor = CFRandomColor;
-    titleL.numberOfLines = 0;
-    titleL.text = @"CFDropDownMenuView 展示demo\n交流QQ 545486205";
+    titleL.text = @"CFDropDownMenuView 展示demo";
     [self.view addSubview:titleL];
     
     // 配置CFDropDownMenuView
@@ -50,21 +49,21 @@
 - (CFDropDownMenuView *)dropDownMenuView
 {
     // DEMO
-    _dropDownMenuView = [[CFDropDownMenuView alloc] initWithFrame:CGRectMake(0, 104, CFScreenWidth, 45)];
+    _dropDownMenuView = [[CFDropDownMenuView alloc] initWithFrame:CGRectMake(0, 64, CFScreenWidth, 45)];
     
     /**
      *  stateConfigDict 属性 格式 详见CFDropDownMenuView.h文件
      */
-//        _dropDownMenuView.stateConfigDict = @{
-//                                         @"selected" : @[[UIColor redColor], @"红箭头"],  // 选中状态
-//                                         };
-//        _dropDownMenuView.stateConfigDict = @{
-//                                             @"normal" : @[[UIColor orangeColor], @"橙箭头"],  // 非选中状态
-//                                             };
-//    _dropDownMenuView.stateConfigDict = @{
-//                                         @"selected" : @[CF_Color_DefaultColor, @"天蓝箭头"],
-//                                         @"normal" : @[[UIColor orangeColor], @"橙箭头"]
-//                                         };
+    //    _dropDownMenuView.stateConfigDict = @{
+    //                                     @"selected" : @[CF_Color_DefaultColor, @"天蓝箭头"],  // 选中状态
+    //                                     };
+    //    _dropDownMenuView.stateConfigDict = @{
+    //                                         @"normal" : @[[UIColor orangeColor], @"橙箭头"],  // 选中状态
+    //                                         };
+    //    _dropDownMenuView.stateConfigDict = @{
+    //                                         @"selected" : @[CF_Color_DefaultColor, @"天蓝箭头"],
+    //                                         @"normal" : @[[UIColor orangeColor], @"橙箭头"]
+    //                                         };
     // 注:  需先 赋值数据源dataSourceArr二维数组  再赋值defaulTitleArray一维数组
     _dropDownMenuView.dataSourceArr = @[
                                        @[@"全部", @"iOS开发", @"安卓开发", @"JAVA开发", @"PHP开发"],
@@ -158,7 +157,7 @@
 - (UITableView *)showTableView
 {
     if (!_showTableView) {
-        _showTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 110, CFScreenWidth, CFScreenHeight) style:UITableViewStyleGrouped];
+        _showTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 69, CFScreenWidth, CFScreenHeight) style:UITableViewStyleGrouped];
         _showTableView.delegate = self;
         _showTableView.dataSource = self;
         _showTableView.backgroundColor = CF_Color_DefalutBackGroundColor;
@@ -214,16 +213,6 @@
         for (NSInteger i = 0; i < 2; i++) {
             NSString *JAVA = @"JAVA开发  10-15k 5年以上";
             NSString *PHP = @"PHP开发   10-15k 5年以上";
-            [dataSourceArr addObject:JAVA];
-            [dataSourceArr addObject:PHP];
-        }
-        for (NSInteger i = 0; i < 3; i++) {
-            NSString *iOS = @"iOS开发   15-20k 1-3年";
-            NSString *android = @"安卓开发   15-20k 1-3年";
-            NSString *JAVA = @"JAVA开发  15-20k 1-3年";
-            NSString *PHP = @"PHP开发   15-20k 1-3年";
-            [dataSourceArr addObject:iOS];
-            [dataSourceArr addObject:android];
             [dataSourceArr addObject:JAVA];
             [dataSourceArr addObject:PHP];
         }

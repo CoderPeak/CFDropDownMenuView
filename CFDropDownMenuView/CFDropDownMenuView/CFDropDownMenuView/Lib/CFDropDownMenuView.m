@@ -75,8 +75,7 @@
         
         CFLabelOnLeftButton *titleBtn = nil;
         
-
-        titleBtn = [CFLabelOnLeftButton createButtonWithImageName:CFDrowMenuViewSrcName(@"灰箭头.png")?:CFDrowMenuViewFrameworkSrcName(@"灰箭头.png") title:@"" titleColor:CF_Color_TextDarkGrayColor frame:CGRectMake(i*btnW, 0, btnW, btnH) target:self action:@selector(titleBtnClicked:)];
+        titleBtn = [CFLabelOnLeftButton createButtonWithImageName:@"向下箭头" title:@"" titleColor:CF_Color_TextDarkGrayColor frame:CGRectMake(i*btnW, 0, btnW, btnH) target:self action:@selector(titleBtnClicked:)];
         
         titleBtn.tag = i+kViewTagConstant;  // 所有tag都加上这个, 防止出现为0的tag
         
@@ -99,25 +98,22 @@
     _defaulTitleArray = defaulTitleArray;
     for (NSInteger i = 0; i < self.titleBtnArr.count; i++) {
         [self.titleBtnArr[i] setTitle:defaulTitleArray[i] forState:UIControlStateNormal];
-     
-        if (self.stateConfigDict[@"normal"]) {
-       
-            UIImage *image = [UIImage imageNamed:self.stateConfigDict[@"normal"][1]];
-            if (image) {  // 使用自己的图片
-                [self changTintColorWithTintColor:self.stateConfigDict[@"normal"][0] tintColorImgName:self.stateConfigDict[@"normal"][1] ForButton:self.titleBtnArr[i]];
-            } else {  // 使用CFDropDownMenuView.bundle自带的
-            
-                NSString *str = [NSString stringWithFormat:@"%@.png", self.stateConfigDict[@"normal"][1]];
-                NSString *imgName = CFDrowMenuViewSrcName(str)?:CFDrowMenuViewFrameworkSrcName(str);
-                [self changTintColorWithTintColor:self.stateConfigDict[@"normal"][0] tintColorImgName:imgName ForButton:self.titleBtnArr[i]];
+        
+        // 选中状态
+        if ([self.dataSourceArr[i] containsObject:defaulTitleArray[i]]) {
+            if (self.stateConfigDict[@"selected"]) {
+                [self changTintColorWithTintColor:self.stateConfigDict[@"selected"][0] tintColorImgName:self.stateConfigDict[@"selected"][1] ForButton:self.titleBtnArr[i]];
+            } else {
+                [self changTintColorWithTintColor:CF_Color_DefaultColor tintColorImgName:@"天蓝箭头" ForButton:self.titleBtnArr[i]];
             }
-            
         } else {
-            // 默认 未设置样式的时候 未选中状态为 灰色箭头/灰色文字
-            [self changTintColorWithTintColor:CF_Color_TextDarkGrayColor tintColorImgName:CFDrowMenuViewSrcName(@"灰箭头.png")?:CFDrowMenuViewFrameworkSrcName(@"灰箭头.png") ForButton:self.titleBtnArr[i]];
-           
+            // 未选中状态
+            if (self.stateConfigDict[@"normal"]) {
+                [self changTintColorWithTintColor:self.stateConfigDict[@"normal"][0] tintColorImgName:self.stateConfigDict[@"normal"][1] ForButton:self.titleBtnArr[i]];
+            } else {
+                [self changTintColorWithTintColor:CF_Color_TextDarkGrayColor tintColorImgName:@"灰箭头" ForButton:self.titleBtnArr[i]];
+            }
         }
-
     }
 }
 
@@ -258,10 +254,10 @@
     cell.textLabel.text = self.dataSource[indexPath.row];
     
     // KVC
-    NSArray *textArr = [self.titleBtnArr valueForKeyPath:@"titleLabel.text"];
+    NSArray *textArr=[self.titleBtnArr valueForKeyPath:@"titleLabel.text"];
    
     
-    if (self.stateConfigDict[@"selected"]) {
+    if (self.stateConfigDict[@"selected"]) { // 选中状态下
         if ([textArr containsObject:cell.textLabel.text]){
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
             cell.tintColor = self.stateConfigDict[@"selected"][0];
@@ -270,11 +266,10 @@
             cell.accessoryType = UITableViewCellAccessoryNone;
             cell.textLabel.textColor = CF_Color_TextDarkGrayColor;
         }
-    }else {
+    }else {  // 默认状态下
         if ([textArr containsObject:cell.textLabel.text]){
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
             cell.textLabel.textColor = CF_Color_DefaultColor;
-            cell.tintColor = CF_Color_DefaultColor;
         } else {
             cell.accessoryType = UITableViewCellAccessoryNone;
             cell.textLabel.textColor = CF_Color_TextDarkGrayColor;
@@ -294,17 +289,9 @@
             [btn setTitle:self.dataSource[indexPath.row] forState:UIControlStateNormal];
             // 改变颜色
             if (self.stateConfigDict[@"selected"]) {
-                UIImage *image = [UIImage imageNamed:self.stateConfigDict[@"selected"][1]];
-                if (image) {  // 使用自己app中的图片
-                    [self changTintColorWithTintColor:self.stateConfigDict[@"selected"][0] tintColorImgName:self.stateConfigDict[@"selected"][1] ForButton:self.titleBtnArr[i]];
-                } else {  // 使用CFDropDownMenuView.bundle自带的
-                    NSString *str = [NSString stringWithFormat:@"%@.png", self.stateConfigDict[@"selected"][1]];
-                    NSString *imgName = CFDrowMenuViewSrcName(str)?:CFDrowMenuViewFrameworkSrcName(str);
-                    [self changTintColorWithTintColor:self.stateConfigDict[@"selected"][0] tintColorImgName:imgName ForButton:self.titleBtnArr[i]];
-                }
-                
-            } else {  // 未设置样式---选中的时候默认 使用CFDropDownMenuView.bundle自带的
-                [self changTintColorWithTintColor:CF_Color_DefaultColor tintColorImgName:CFDrowMenuViewSrcName(@"天蓝箭头.png")?:CFDrowMenuViewFrameworkSrcName(@"天蓝箭头.png") ForButton:btn];
+                [self changTintColorWithTintColor:self.stateConfigDict[@"selected"][0] tintColorImgName:self.stateConfigDict[@"selected"][1] ForButton:self.titleBtnArr[i]];
+            } else {
+                [self changTintColorWithTintColor:CF_Color_DefaultColor tintColorImgName:@"天蓝箭头" ForButton:btn];
             }
             
         }
