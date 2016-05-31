@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A4894E21CFD839400606DD3 /* CFDropDownMenuView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8A4894E11CFD839400606DD3 /* CFDropDownMenuView.bundle */; };
 		8A4E91741CF95CC4001ED333 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E91731CF95CC4001ED333 /* main.m */; };
 		8A4E91771CF95CC4001ED333 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E91761CF95CC4001ED333 /* AppDelegate.m */; };
 		8A4E917A1CF95CC4001ED333 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E91791CF95CC4001ED333 /* ViewController.m */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8A4894E11CFD839400606DD3 /* CFDropDownMenuView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CFDropDownMenuView.bundle; sourceTree = "<group>"; };
 		8A4E916F1CF95CC4001ED333 /* CFDropDownMenuView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CFDropDownMenuView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A4E91731CF95CC4001ED333 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8A4E91751CF95CC4001ED333 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 		8A4E918B1CF96115001ED333 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8A4894E11CFD839400606DD3 /* CFDropDownMenuView.bundle */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 				8A4E91821CF95CC4001ED333 /* LaunchScreen.storyboard in Resources */,
 				8A4E917F1CF95CC4001ED333 /* Assets.xcassets in Resources */,
 				8A4E917D1CF95CC4001ED333 /* Main.storyboard in Resources */,
+				8A4894E21CFD839400606DD3 /* CFDropDownMenuView.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +348,7 @@
 				8A4E91881CF95CC4001ED333 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

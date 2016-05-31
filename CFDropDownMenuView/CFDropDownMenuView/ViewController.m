@@ -32,10 +32,11 @@
     // 配置展示结果talbeview
     [self.view addSubview:self.showTableView];
     
-    UILabel *titleL = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, CFScreenWidth, 44)];
+    UILabel *titleL = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, CFScreenWidth, 88)];
     titleL.textAlignment = NSTextAlignmentCenter;
     titleL.backgroundColor = CFRandomColor;
-    titleL.text = @"CFDropDownMenuView 展示demo";
+    titleL.numberOfLines = 0;
+    titleL.text = @"CFDropDownMenuView 展示demo\n交流QQ 545486205";
     [self.view addSubview:titleL];
     
     // 配置CFDropDownMenuView
@@ -49,34 +50,34 @@
 - (CFDropDownMenuView *)dropDownMenuView
 {
     // DEMO
-    _dropDownMenuView = [[CFDropDownMenuView alloc] initWithFrame:CGRectMake(0, 64, CFScreenWidth, 45)];
+    _dropDownMenuView = [[CFDropDownMenuView alloc] initWithFrame:CGRectMake(0, 104, CFScreenWidth, 45)];
     
     /**
      *  stateConfigDict 属性 格式 详见CFDropDownMenuView.h文件
      */
-    //    _dropDownMenuView.stateConfigDict = @{
-    //                                     @"selected" : @[CF_Color_DefaultColor, @"天蓝箭头"],  // 选中状态
-    //                                     };
-    //    _dropDownMenuView.stateConfigDict = @{
-    //                                         @"normal" : @[[UIColor orangeColor], @"橙箭头"],  // 选中状态
-    //                                         };
-    //    _dropDownMenuView.stateConfigDict = @{
-    //                                         @"selected" : @[CF_Color_DefaultColor, @"天蓝箭头"],
-    //                                         @"normal" : @[[UIColor orangeColor], @"橙箭头"]
-    //                                         };
+//        _dropDownMenuView.stateConfigDict = @{
+//                                         @"selected" : @[[UIColor redColor], @"红箭头"],
+//                                         };
+//            _dropDownMenuView.stateConfigDict = @{
+//                                                 @"normal" : @[[UIColor orangeColor], @"测试黄"],
+//                                                 };
+//    _dropDownMenuView.stateConfigDict = @{
+//                                         @"selected" : @[CF_Color_DefaultColor, @"天蓝箭头"],
+//                                         @"normal" : @[[UIColor orangeColor], @"橙箭头"]
+//                                         };
     // 注:  需先 赋值数据源dataSourceArr二维数组  再赋值defaulTitleArray一维数组
     _dropDownMenuView.dataSourceArr = @[
-                                       @[@"全部", @"iOS开发", @"安卓开发", @"JAVA开发", @"PHP开发"],
-                                       @[@"5-10k", @"10-15k", @"15-20k", @"20k以上"],
-                                       @[@"1年以内", @"1-3年", @"3-5年", @"5年以上"]
-                                       ].mutableCopy;
+                                        @[@"全部", @"iOS开发", @"安卓开发", @"JAVA开发", @"PHP开发"],
+                                        @[@"5-10k", @"10-15k", @"15-20k", @"20k以上"],
+                                        @[@"1年以内", @"1-3年", @"3-5年", @"5年以上"]
+                                        ].mutableCopy;
     
     _dropDownMenuView.defaulTitleArray = [NSArray arrayWithObjects:@"工作岗位",@"薪资", @"工作经验", nil];
     
     _dropDownMenuView.delegate = self;
     
     // 下拉列表 起始y
-
+    
     _dropDownMenuView.startY = CGRectGetMaxY(_dropDownMenuView.frame);
     
     /**
@@ -104,7 +105,7 @@
                 break ;
             }
             [totalTitleStr appendString:@"---"];
-          
+            
         }
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"职位筛选信息" message:[NSString stringWithFormat:@"您当前选中的是\n(%@)\n 当前所有展示的是\n%@", currentTitle, totalTitleStr] preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *alertAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -141,23 +142,23 @@
                 }];
                 [alertController2 addAction:alertAction2];
             }];
-
+            
         }];
         [alertController addAction:alertAction];
         [weakSelf presentViewController:alertController animated:NO completion:^{
         }];
     };
     
-   
+    
     return _dropDownMenuView;
-   
+    
 }
 
 /* 展示结果showTableView */
 - (UITableView *)showTableView
 {
     if (!_showTableView) {
-        _showTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 69, CFScreenWidth, CFScreenHeight) style:UITableViewStyleGrouped];
+        _showTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 110, CFScreenWidth, CFScreenHeight) style:UITableViewStyleGrouped];
         _showTableView.delegate = self;
         _showTableView.dataSource = self;
         _showTableView.backgroundColor = CF_Color_DefalutBackGroundColor;
@@ -216,6 +217,16 @@
             [dataSourceArr addObject:JAVA];
             [dataSourceArr addObject:PHP];
         }
+        for (NSInteger i = 0; i < 3; i++) {
+            NSString *iOS = @"iOS开发   15-20k 1-3年";
+            NSString *android = @"安卓开发   15-20k 1-3年";
+            NSString *JAVA = @"JAVA开发  15-20k 1-3年";
+            NSString *PHP = @"PHP开发   15-20k 1-3年";
+            [dataSourceArr addObject:iOS];
+            [dataSourceArr addObject:android];
+            [dataSourceArr addObject:JAVA];
+            [dataSourceArr addObject:PHP];
+        }
         for (NSInteger i = 0; i < 2; i++) {
             NSString *iOS = @"iOS开发   15-20k 3-5年";
             NSString *android = @"安卓开发   15-20k 3-5年";
@@ -241,7 +252,7 @@
             NSString *android = @"安卓开发   20k以上  5年以上";
             [dataSourceArr addObject:iOS];
             [dataSourceArr addObject:android];
-           
+            
         }
         _dataSourceArr = dataSourceArr;
         _allDataSourceArr = dataSourceArr;
@@ -271,7 +282,7 @@
     NSMutableAttributedString * attributedString = [[NSMutableAttributedString alloc] initWithString:str];
     [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:NSMakeRange(0, 6)];
     [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(6, 8)];
-
+    
     cell.textLabel.attributedText = attributedString;
     
     return cell;
