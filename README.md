@@ -4,7 +4,10 @@
 ##### 支持pod导入
 ##### pod 'CFDropDownMenuView'
 
-### demo展示 - 由于网络原因, 可能gif效果图会展示的比较卡, 可以下载运行查看demo---简单使用在gif图片下面
+### demo展示 - 由于网络原因, 可能gif效果图会展示的比较卡, 可以下载运行查看demo---简单使用代码在gif图片下面
+### 特别注意 
+- 用cocoapods导入使用的时候, 项目没任何问题
+- 但是仅在下载demo的时候 .bundle资源包实际上已经下载到您本地 但是不知为何, 用xcode打开项目的时候 xcode不能识别.bundle资源包.  右击项目文件 show in finder  即可以查看到.bundle资源包   然后手动拖入xcode即可  此时箭头就会随下拉列表的展示/缩回 进行旋转动画
 ![](/showdemo.gif) 
 ### 使用
 - 创建
