@@ -55,12 +55,12 @@
     /**
      *  stateConfigDict 属性 格式 详见CFDropDownMenuView.h文件
      */
-//        _dropDownMenuView.stateConfigDict = @{
-//                                         @"selected" : @[[UIColor redColor], @"红箭头"],
-//                                         };
-//            _dropDownMenuView.stateConfigDict = @{
-//                                                 @"normal" : @[[UIColor orangeColor], @"测试黄"],
-//                                                 };
+//    _dropDownMenuView.stateConfigDict = @{
+//                                        @"selected" : @[[UIColor redColor], @"红箭头"],
+//                                        };
+//    _dropDownMenuView.stateConfigDict = @{
+//                                        @"normal" : @[[UIColor orangeColor], @"测试黄"],
+//                                        };
 //    _dropDownMenuView.stateConfigDict = @{
 //                                         @"selected" : @[CF_Color_DefaultColor, @"天蓝箭头"],
 //                                         @"normal" : @[[UIColor orangeColor], @"橙箭头"]
