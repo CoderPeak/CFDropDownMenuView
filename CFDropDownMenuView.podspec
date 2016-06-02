@@ -11,7 +11,7 @@ s.license      = 'MIT'
 s.authors      = {'CoderPeak' => '545486205@qq.com'}
 s.platform     = :ios, '6.0'
 s.source       = {:git => 'https://github.com/CoderPeak/CFDropDownMenuView.git' , :tag => s.version.to_s}
-s.source_files = 'CFDropDownMenuView/**/*.{h,m}'
+s.source_files = 'CFDropDownMenuView/CFDropDownMenuView/**/*.{h,m}'
 s.resource     = 'CFDropDownMenuView/CFDropDownMenuView.bundle'
 s.requires_arc = true
 end
