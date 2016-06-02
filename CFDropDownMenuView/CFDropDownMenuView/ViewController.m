@@ -159,6 +159,8 @@
 {
     if (!_showTableView) {
         _showTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 110, CFScreenWidth, CFScreenHeight) style:UITableViewStyleGrouped];
+        _showTableView.contentInset = UIEdgeInsetsMake(0, 0, 130, 0);
+        _showTableView.scrollIndicatorInsets = UIEdgeInsetsMake(self.dropDownMenuView.cf_height, 0, _showTableView.cf_y, 0);
         _showTableView.delegate = self;
         _showTableView.dataSource = self;
         _showTableView.backgroundColor = CF_Color_DefalutBackGroundColor;
