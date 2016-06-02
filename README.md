@@ -4,7 +4,7 @@
 ##### 支持pod导入
 ##### pod 'CFDropDownMenuView'
 
-### demo展示 - 由于网络原因, 可能gif效果图会展示的比较卡, 可以下载运行查看demo
+### demo展示 - 由于网络原因, 可能gif效果图会展示的比较卡, 可以下载运行查看demo---简单使用在gif图片下面
 ![](/showdemo.gif) 
 ### 使用
 - 创建
