@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
 s.name         = 'CFDropDownMenuView'
-s.version      = '0.0.2'
+s.version      = '0.0.3'
 s.summary      = '简单实用的下拉列表菜单控件'
 s.description      = <<-DESC
 "下拉列表菜单控件, 支持单列 多列条件选择"
