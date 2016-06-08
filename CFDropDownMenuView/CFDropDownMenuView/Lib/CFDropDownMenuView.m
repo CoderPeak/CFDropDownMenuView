@@ -141,12 +141,33 @@
 // 点击按钮动画
 - (void)animationWhenClickTitleBtn:(UIButton *)btn
 {
-    [UIView animateWithDuration:0.25 animations:^{
-        btn.imageView.transform = CGAffineTransformMakeRotation(M_PI);
-        btn.enabled = NO;
-    }];
+    /**
+     *  0.0.2版本 bug  当没有把当前分类的菜单退出时 就点其他分类  会导致 箭头方向错了
+     */
+//    [UIView animateWithDuration:0.25 animations:^{
+//        btn.imageView.transform = CGAffineTransformMakeRotation(M_PI);
+//        btn.enabled = NO;
+//    }];
     
     _lastClickedBtn = btn;
+    
+    /**
+     *  0.0.3  箭头方向错了bug解决
+     */
+    for (UIButton *subBtn in self.titleBtnArr) {
+        if (subBtn==btn) {
+            [UIView animateWithDuration:0.25 animations:^{
+                subBtn.imageView.transform = CGAffineTransformMakeRotation(M_PI);
+                subBtn.enabled = NO;
+            }];
+            
+        } else {
+            [UIView animateWithDuration:0.25 animations:^{
+                subBtn.imageView.transform = CGAffineTransformMakeRotation(0);
+                subBtn.enabled = YES;
+            }];
+        }
+    }
 }
 
 #pragma mark - lazy
