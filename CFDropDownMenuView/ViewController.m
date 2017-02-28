@@ -67,6 +67,7 @@
 //                                         };
     // 注:  需先 赋值数据源dataSourceArr二维数组  再赋值defaulTitleArray一维数组
     _dropDownMenuView.dataSourceArr = @[
+//                                        @[@"全部", @"iOS开发", @"安卓开发", @"JAVA开发", @"PHP开发",@"a",@"b",@"c",@"d",@"e",@"f",@"g",@"h",@"i",@"j",@"k",@"l",@"m"],
                                         @[@"全部", @"iOS开发", @"安卓开发", @"JAVA开发", @"PHP开发"],
                                         @[@"5-10k", @"10-15k", @"15-20k", @"20k以上"],
                                         @[@"1年以内", @"1-3年", @"3-5年", @"5年以上"]
@@ -286,6 +287,8 @@
     [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(6, 8)];
     
     cell.textLabel.attributedText = attributedString;
+    
+    
     
     return cell;
 }
