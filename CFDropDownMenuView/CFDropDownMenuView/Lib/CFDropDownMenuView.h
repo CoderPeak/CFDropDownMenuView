@@ -14,6 +14,7 @@
 @protocol CFDropDownMenuViewDelegate <NSObject>
 
 @optional
+
 - (void)dropDownMenuView:(CFDropDownMenuView *)dropDownMenuView clickOnCurrentButtonWithTitle:(NSString *)currentTitle andCurrentTitleArray:(NSArray *)currentTitleArray;
 
 @end
@@ -22,10 +23,10 @@
 /**
  *  提供两种方式处理筛选条件后的业务逻辑(回调方式) - 代理/block 二选一
  */
-/* 代理 */
-@property (nonatomic, weak) id<CFDropDownMenuViewDelegate> delegate;
 /* block 点击选择条件按钮 调用 */
 typedef void (^ChooseConditionBlock)(NSString *, NSArray *);
+/* 代理 */
+@property (nonatomic, weak) id<CFDropDownMenuViewDelegate> delegate;
 @property (nonatomic, copy) ChooseConditionBlock chooseConditionBlock;
 
 /**
@@ -34,11 +35,8 @@ typedef void (^ChooseConditionBlock)(NSString *, NSArray *);
  */
 @property (nonatomic, strong) NSMutableArray *dataSourceArr;
 
-
-
 /* 默认显示的 */
 @property (nonatomic, strong) NSArray *defaulTitleArray;
-
 
 /* 分类按钮 数组 */
 @property (nonatomic, strong) NSMutableArray *titleBtnArr;
